@@ -16,15 +16,18 @@
       </div>
       <div class="col-3 text-end">
         <!-- TODO: if logged in user, hide Login and Sign Up -->
-        <!-- TODO: if logged in user, show user's first name and Logout button -->
         <% @user=User.find_by({"id" => session ["user_id"]}) %>
 
-        <a href="/login" class="btn btn-default">Login</a> |
-        Hey, <%= @user["first_name"] %>
+       <% if @user == nil %>
+          <a href="/users/new" class="btn btn-default">Signup</a>
+          <a href="/login" class="btn btn-default">Login</a> |
+  
+        <% else %>
+   <!-- TODO: if logged in user, show user's first name and Logout button -->
 
-        <a href="/users/new" class="btn btn-default">Signup</a>
-        Hey, You |
+        Hey, <%= @user["first_name"] %>
         <a href="/logout" class="btn btn-default">Logout</a>
+        <% end %>
       </div>
     </div>
 
