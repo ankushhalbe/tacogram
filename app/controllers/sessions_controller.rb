@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       if BCrypt::Password.new(@user["password"]) == params["password"]
         session["user_id"] = @user["id"]
         flash["notice"] = "Welcome, #{@user["first_name"]}."
-        ADD COOKIE
+        session["user"id"] = @user ["id"]
         redirect_to "/posts"        
       else
         flash["notice"] ="Nope"
